@@ -1,0 +1,65 @@
+# ===============================
+# ENTORNOS VIRTUALES (Python)
+# ===============================
+venv/
+env/
+.venv/
+
+# ===============================
+# PYTHON / DJANGO
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+staticfiles/
+media/
+db.sqlite3
+
+# Migraciones compiladas (opcional)
+*.pyc
+
+# ===============================
+# VARIABLES DE ENTORNO / SECRETOS
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# LOGS
+# ===============================
+logs/
+*.log
+
+# ===============================
+# NODE / REACT (frontend)
+# ===============================
+node_modules/
+build/
+dist/
+
+# ===============================
+# CACHE / HERRAMIENTAS
+# ===============================
+.cache/
+.npm/
+.yarn/
+
+# ===============================
+# SISTEMA / IDE
+# ===============================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ===============================
+# ARCHIVOS TEMPORALES
+# ===============================
+*.tmp
+*.bak
+*.temp
