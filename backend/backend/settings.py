@@ -141,20 +141,36 @@ LOGGING = {
 }
 
 # =========================================================
-# 3) DISPONIBILIDAD
+# 3) DISPONIBILIDAD - DATABASES (Render + Local)
 # =========================================================
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
-        'CONN_MAX_AGE': 600,
-        'OPTIONS': {'connect_timeout': 10}
+import dj_database_url
+
+DATABASE_URL = os.getenv("DATABASE_URL", "")
+
+if DATABASE_URL:
+    # Render: usa el connection string (Internal Database URL)
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
+else:
+    # Local: usa variables DB_*
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST', default='localhost'),
+            'PORT': config('DB_PORT', default='5432'),
+            'CONN_MAX_AGE': 600,
+            'OPTIONS': {'connect_timeout': 10}
+        }
+    }
+
 
 # Throttling DRF (reduce abuso/fuerza bruta a endpoints)
 REST_FRAMEWORK = {
