@@ -2,6 +2,7 @@
 # config/urls.py
 # ============================================
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,6 +28,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path("", lambda r: JsonResponse({"ok": True, "docs": ["/swagger/", "/redoc/"]})),
     # Admin
     path('admin/', admin.site.urls),
       # Auth JWT
