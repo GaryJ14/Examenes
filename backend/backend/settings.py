@@ -267,7 +267,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'config' / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # =========================================================
 # 5) PRODUCCIÓN (HTTPS, HSTS)
@@ -286,4 +286,4 @@ if not DEBUG:
 
 # Directorios
 (BASE_DIR / 'logs').mkdir(exist_ok=True)
-(BASE_DIR / 'config' / 'media').mkdir(parents=True, exist_ok=True)
+MEDIA_ROOT.mkdir(parents=True, exist_ok=True)
